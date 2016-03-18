@@ -7,4 +7,4 @@ We'll use Unity3D to make the game, blender to create 3D components and GitHub t
 
 This is still very much work in progress, we've only created the Git repo which includes empty Unity project, set up the dependencies and set up Travis-CI integration.
 
-To achieve a great level of visual fidelity we'll need to use propper light shaders, and we'll leverage Unity's component system for smooth input handeling accross all platforms.
+To achieve a great level of visual fidelity we'll need to create and use propper light shaders, and we'll leverage Unity's component system for smooth input handeling accross all platforms.

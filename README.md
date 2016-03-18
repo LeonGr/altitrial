@@ -1,7 +1,7 @@
 # altitrial
 Altitude + Trials = altitrial
 
-Altitrial will be a game where you ride around on a dirt bike, and try to jump from buidling to building to a certian end point. You'll do this using ramps and similar objects. You'll be able to play this game on Mac, Windows, Linux, iOS and Android. The game is going to be pretty awesome, we hope. 
+Altitrial will be a game where you ride around on a dirt bike, and try to jump from buidling to building to a certian end point. You'll do this using ramps and similar objects. You'll be able to play this game on Mac, Windows, Linux, iOS and Android. We have high hopes (no pun intended) that this game is going to be really awesome.
 
 We'll use Unity3D to make the game, blender to create 3D components and GitHub to sync. We'll get info from the Unity Docs and YouTube tutorials.
 

@@ -505,6 +505,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1849651881}
   - 54: {fileID: 1849651880}
+  - 114: {fileID: 1849651882}
   m_Layer: 0
   m_Name: bike_root
   m_TagString: Untagged
@@ -541,6 +542,26 @@ Transform:
   - {fileID: 2077195799}
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!114 &1849651882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849651879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a393c1d18a50c4409a389e2853f5649e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axleInfos:
+  - wheel: {fileID: 407221046}
+    motor: 0
+    steering: 1
+  - wheel: {fileID: 1347007851}
+    motor: 1
+    steering: 0
+  maxMotorTorque: 200
+  maxSteeringAngle: 30
 --- !u!1 &2077195798
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class BikeController : MonoBehaviour {
         Vector3 position;
         Quaternion rotation;
         collider.GetWorldPose(out position, out rotation);
-        rotation *= Quaternion.Euler(0, 0, 90);
+        rotation *= Quaternion.Euler(0, 90, 0);
         
         visualWheel.transform.position = position;
         visualWheel.transform.rotation = rotation;

@@ -7,7 +7,29 @@ public class BikeController : MonoBehaviour {
     public List<AxleInfo> axleInfos;
     public float maxMotorTorque;
     public float maxSteeringAngle;
+   
+   
+    public float maxSpeed;
+    public float accelerationMultiplier;
 
+
+    public void Start() {
+        
+        // Fix jittery car movement by changing sub-stepping
+        foreach (AxleInfo axleInfo in axleInfos) {
+            if (axleInfo.steering) {
+                axleInfo.rightWheel.ConfigureVehicleSubsteps(5, 12, 15);
+                axleInfo.leftWheel.ConfigureVehicleSubsteps(5, 12, 15);
+            }
+            
+            if (axleInfo.motor) {
+                axleInfo.rightWheel.ConfigureVehicleSubsteps(5, 12, 15);
+                axleInfo.leftWheel.ConfigureVehicleSubsteps(5, 12, 15);            
+            }
+        }
+        
+        
+    }
 
     // finds the corresponding visual wheel
     // correctly applies the transform
@@ -27,6 +49,7 @@ public class BikeController : MonoBehaviour {
         visualWheel.transform.rotation = rotation;
     }
       
+      
 
 	void FixedUpdate () {
 	    float motorInput = maxMotorTorque * Input.GetAxis("Vertical");
@@ -36,6 +59,7 @@ public class BikeController : MonoBehaviour {
             if (axleInfo.steering) {
                 axleInfo.rightWheel.steerAngle = steeringInput;
                 axleInfo.leftWheel.steerAngle = steeringInput;
+                
             }
             
             if (axleInfo.motor) {
@@ -46,7 +70,19 @@ public class BikeController : MonoBehaviour {
             ApplyLocalPositionToVisuals(axleInfo.leftWheel);
             ApplyLocalPositionToVisuals(axleInfo.rightWheel);
         }
+        
+        
+        if (Input.GetAxis("Boost") > 0) {
+            Turbo();
+        }
 	}
+    
+    void Turbo () {
+        Debug.Log("hi");
+        Rigidbody rb = GetComponent<Rigidbody>();
+        
+        rb.AddForce(transform.forward * maxSpeed, ForceMode.Force);
+    }
 }
 [System.Serializable]
 public class AxleInfo {

@@ -8,12 +8,15 @@ public class TowerGeneratorEditor : Editor {
     public override void OnInspectorGUI() {
         TowerGenerator towerGenerator = (TowerGenerator) target;
         
-        if (DrawDefaultInspector()) {
-           
-        }
         
         if (GUILayout.Button("Generate")) {
             towerGenerator.GenerateTower();
+        }
+        
+        if (DrawDefaultInspector()) {
+            if(towerGenerator.shouldAutoUpdate) {
+                towerGenerator.GenerateTower();
+            }
         }
         
     }

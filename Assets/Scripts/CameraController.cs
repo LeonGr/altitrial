@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour {
   
     public Transform target;
     public Transform targetCameraPosition;
+    public Transform targetCameraLookPosition;
  
     private Vector3 relativeCameraPos;
     
@@ -23,7 +24,7 @@ public class CameraController : MonoBehaviour {
     void SmoothLookAt ()
     {
         // Create a vector from the camera towards the player.
-        Vector3 relPlayerPosition = target.position - transform.position;
+        Vector3 relPlayerPosition = targetCameraLookPosition.position - transform.position;
         
         // Create a rotation based on the relative position of the player being the forward vector.
         Quaternion lookAtRotation = Quaternion.LookRotation(relPlayerPosition);

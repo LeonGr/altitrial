@@ -801,7 +801,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1049590729}
   m_LocalRotation: {x: -0.17461154, y: 0, z: 0, w: 0.98463744}
-  m_LocalPosition: {x: -0.83773685, y: 1.96, z: -34.29}
+  m_LocalPosition: {x: -0.83773685, y: 1.96, z: -40.37}
   m_LocalScale: {x: 5.96746, y: 0.40004957, z: 16.780794}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1520,8 +1520,8 @@ Rigidbody:
   m_GameObject: {fileID: 1849651879}
   serializedVersion: 2
   m_Mass: 3000
-  m_Drag: 0.8
-  m_AngularDrag: 0.8
+  m_Drag: 1.2
+  m_AngularDrag: 1.2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1534,7 +1534,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1849651879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 12.2, z: -95.9}
+  m_LocalPosition: {x: 0, y: 3.26, z: -95.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1806430548}
@@ -1566,6 +1566,10 @@ MonoBehaviour:
   maxSteeringAngle: 40
   maxSpeed: 3000
   accelerationMultiplier: 0
+  defaultDrag: 1.2
+  defaultAngularDrag: 1.2
+  turboDrag: 0.2
+  turboAngularDrag: 40
 --- !u!1 &1881947544
 GameObject:
   m_ObjectHideFlags: 0

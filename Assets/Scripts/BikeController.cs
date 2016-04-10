@@ -11,6 +11,11 @@ public class BikeController : MonoBehaviour {
    
     public float maxSpeed;
     public float accelerationMultiplier;
+    
+    public float defaultDrag;
+    public float defaultAngularDrag;
+    public float turboDrag;
+    public float turboAngularDrag;
 
 
     public void Start() {
@@ -77,16 +82,19 @@ public class BikeController : MonoBehaviour {
         }
         
         
-        if (Input.GetAxis("Boost") > 0) {
-            Turbo();
-        }
+        ApplyTurbo();
 	}
     
-    void Turbo () {
-        Debug.Log("hi");
+    void ApplyTurbo () {
         Rigidbody rb = GetComponent<Rigidbody>();
         
-        rb.AddForce(transform.forward * maxSpeed, ForceMode.Force);
+        if (Input.GetAxis("Boost") > 0) {
+            rb.drag = turboDrag;
+            rb.angularDrag = turboAngularDrag;
+        } else {
+            rb.drag = defaultDrag;
+            rb.angularDrag = defaultAngularDrag;
+        }
     }
 }
 [System.Serializable]

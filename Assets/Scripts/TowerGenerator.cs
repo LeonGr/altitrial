@@ -9,13 +9,19 @@ public class TowerGenerator : MonoBehaviour {
     public List<FloorInfo> floorInfos;
     
     
-	// Use this for initialization
-	void Start () {
+    public void GenerateTower() {
+        
+        DestroyAllChildren();
         
         // Iterate through the floorInfo's
         for (int i = 0; i < floorInfos.Count; i++){
             AddFloor(i, floorInfos[i]);
         }
+    }
+    
+	// Use this for initialization
+	void Start () {
+        
 	}
 	
 	// Update is called once per frame
@@ -37,7 +43,18 @@ public class TowerGenerator : MonoBehaviour {
                                           newHeight,
                                           transform.position.z);
         
-        Instantiate(towerSegment, newPosition, newRotation);
+        GameObject newFloor = (GameObject) Instantiate(towerSegment, newPosition, newRotation);
+        newFloor.transform.parent = transform;
+    }
+    
+    // Use this before benerating
+    void DestroyAllChildren () {
+        
+        // Iterating through the array backwards, because the childCount changes halfway through
+        for (int i = transform.childCount - 1; i >= 0; i--) {
+            DestroyImmediate(transform.GetChild(i).gameObject);
+        }
+        
     }
 }
 

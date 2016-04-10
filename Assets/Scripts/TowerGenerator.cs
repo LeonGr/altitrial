@@ -33,8 +33,8 @@ public class TowerGenerator : MonoBehaviour {
     
     void AddFloor(int floorNumber, FloorInfo floor) {  
                 
-        float floorHeight = 25f; // hardcoded cause why not
-        float newHeight = transform.position.y + 0.5f * + floorHeight + (float) floorNumber * floorHeight -4.95f;
+        float floorHeight = 20f; // hardcoded cause why not
+        float newHeight = transform.position.y + (float) floorNumber * floorHeight;
         
         Debug.Log("Floorheight " + newHeight);
         
@@ -48,7 +48,7 @@ public class TowerGenerator : MonoBehaviour {
         
         
         if (floor.northSideIsRamp) {
-            Vector3 rampPosition = newFloor.transform.position + new Vector3(0f, -7.5f, 23f);
+            Vector3 rampPosition = newFloor.transform.position + new Vector3(0f, 0f, 23f);
             Quaternion rampRotation = transform.rotation * Quaternion.Euler(0f, 90f, 0);
             
             GameObject newRamp = (GameObject) Instantiate(ramp, rampPosition, rampRotation);

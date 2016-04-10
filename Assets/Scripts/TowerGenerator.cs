@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class TowerGenerator : MonoBehaviour {
 
     public GameObject towerSegment;
+    public GameObject ramp;
+    
     
     public List<FloorInfo> floorInfos;
     
@@ -30,21 +32,28 @@ public class TowerGenerator : MonoBehaviour {
 	}
     
     void AddFloor(int floorNumber, FloorInfo floor) {  
+                
+        float floorHeight = 25f; // hardcoded cause why not
+        float newHeight = transform.position.y + 0.5f * + floorHeight + (float) floorNumber * floorHeight -4.95f;
         
-        // Objects get imported with a 90 degrees angle for some reason... this is a simple workaround
-        Quaternion newRotation = transform.rotation;
-        newRotation *= Quaternion.Euler(90, 0, 0);
-        
-        float floorHeight = towerSegment.transform.lossyScale.y;
-        float newHeight = transform.position.y + 0.5f * + floorHeight + (float) floorNumber * floorHeight;
-        
+        Debug.Log("Floorheight " + newHeight);
         
         Vector3 newPosition = new Vector3(transform.position.x, 
                                           newHeight,
                                           transform.position.z);
         
-        GameObject newFloor = (GameObject) Instantiate(towerSegment, newPosition, newRotation);
+        GameObject newFloor = (GameObject) Instantiate(towerSegment, newPosition, transform.rotation);
         newFloor.transform.parent = transform;
+        
+        
+        
+        if (floor.northSideIsRamp) {
+            Vector3 rampPosition = newFloor.transform.position + new Vector3(0f, -7.5f, 23f);
+            Quaternion rampRotation = transform.rotation * Quaternion.Euler(0f, 90f, 0);
+            
+            GameObject newRamp = (GameObject) Instantiate(ramp, rampPosition, rampRotation);
+            newRamp.transform.parent = newFloor.transform;
+        }
     }
     
     // Use this before benerating

@@ -91,6 +91,8 @@ public class BikeController : MonoBehaviour {
         if (Input.GetAxis("Boost") > 0) {
             rb.drag = turboDrag;
             rb.angularDrag = turboAngularDrag;
+            
+            rb.velocity *= 1.01f;
         } else {
             rb.drag = defaultDrag;
             rb.angularDrag = defaultAngularDrag;

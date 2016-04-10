@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1849651881}
   targetCameraPosition: {fileID: 1130327798}
-  smooth: 1.5
+  smooth: 2
 --- !u!1001 &1732091219
 Prefab:
   m_ObjectHideFlags: 0
@@ -1564,7 +1564,7 @@ MonoBehaviour:
     steering: 0
   maxMotorTorque: 1700
   maxSteeringAngle: 40
-  maxSpeed: 1000
+  maxSpeed: 3000
   accelerationMultiplier: 0
 --- !u!1 &1881947544
 GameObject:

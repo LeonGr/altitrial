@@ -7,7 +7,9 @@ public class TowerGenerator : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        AddSegment();
+        AddSegment(0);
+        AddSegment(1);
+        AddSegment(2);
 	}
 	
 	// Update is called once per frame
@@ -15,11 +17,20 @@ public class TowerGenerator : MonoBehaviour {
 	
 	}
     
-    void AddSegment() {
+    void AddSegment(int floorNumber) {  
         
         // Objects get imported with a 90 degrees angle for some reason... this is a simple workaround
         Quaternion newRotation = transform.rotation;
         newRotation *= Quaternion.Euler(90, 0, 0);
-        Instantiate(towerSegment, transform.position, newRotation);
+        
+        float floorHeight = towerSegment.transform.lossyScale.y;
+        float newHeight = transform.position.y + 0.5f * + floorHeight + (float) floorNumber * floorHeight;
+        
+        
+        Vector3 newPosition = new Vector3(transform.position.x, 
+                                          newHeight,
+                                          transform.position.z);
+        
+        Instantiate(towerSegment, newPosition, newRotation);
     }
 }

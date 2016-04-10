@@ -33,7 +33,7 @@ public class BikeController : MonoBehaviour {
 
     // finds the corresponding visual wheel
     // correctly applies the transform
-    public void ApplyLocalPositionToVisuals(WheelCollider collider) {
+    public void ApplyLocalPositionToVisuals(WheelCollider collider, bool isLeftWheel) {
         if (collider.transform.childCount == 0) {
             return;
         }
@@ -43,7 +43,12 @@ public class BikeController : MonoBehaviour {
         Vector3 position;
         Quaternion rotation;
         collider.GetWorldPose(out position, out rotation);
-        rotation *= Quaternion.Euler(0, 90, 0);
+        
+        if (isLeftWheel) {
+            rotation *= Quaternion.Euler(0, -90, 0);    
+        } else {
+            rotation *= Quaternion.Euler(0, 90, 0);
+        }
         
         visualWheel.transform.position = position;
         visualWheel.transform.rotation = rotation;
@@ -67,8 +72,8 @@ public class BikeController : MonoBehaviour {
                 axleInfo.leftWheel.motorTorque = motorInput;
             }
         
-            ApplyLocalPositionToVisuals(axleInfo.leftWheel);
-            ApplyLocalPositionToVisuals(axleInfo.rightWheel);
+            ApplyLocalPositionToVisuals(axleInfo.leftWheel, true);
+            ApplyLocalPositionToVisuals(axleInfo.rightWheel, false);
         }
         
         

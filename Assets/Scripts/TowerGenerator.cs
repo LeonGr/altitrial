@@ -5,14 +5,16 @@ using System.Collections.Generic;
 public class TowerGenerator : MonoBehaviour {
 
     public GameObject towerSegment;
-    public GameObject ramp;
-    
-    
+    public GameObject ramp; 
+    public GameObject window;
     public List<FloorInfo> floorInfos;
     
     // Automatically update tower, which can be quite expensive
     public bool shouldAutoUpdate;
     
+    
+    private Vector3[] windowPositions = new Vector3[4] {new Vector3(0, 7.5f, 24.9f), new Vector3(24.9f, 7.5f, 0), new Vector3(0, 7.5f, -24.9f), new Vector3(-24.9f, 7.5f, 0)};
+    private Quaternion[] windowRotations = new Quaternion[4] {Quaternion.Euler(90f, 0, 0), Quaternion.Euler(90f, 90f, 0), Quaternion.Euler(90f, 180f, 0), Quaternion.Euler(90f, 270f, 0)};
     
     public void GenerateTower() {
         
@@ -51,6 +53,20 @@ public class TowerGenerator : MonoBehaviour {
         newFloor.transform.parent = transform;
         
         AddRampsToFloor(newFloor, floorInfo);
+        AddWindowsToFloor(newFloor, floorInfo);
+    }
+    
+    void AddWindowsToFloor(GameObject floor, FloorInfo floorInfo) {
+        if (floorInfo.hasWindows) {
+            for (int i = 0; i < 4; i++)
+            {
+                Vector3 windowPosition = floor.transform.position + windowPositions[i];
+                Quaternion windowRotation = floor.transform.rotation * windowRotations[i];
+                
+                GameObject newWindow = (GameObject) Instantiate(window, windowPosition, windowRotation);
+                newWindow.transform.parent = floor.transform;
+            }    
+        }
     }
     
     void AddRampsToFloor(GameObject floor, FloorInfo floorInfo) {
@@ -111,4 +127,6 @@ public class FloorInfo {
     public bool eastSideIsRamp;
     public bool southSideIsRamp;
     public bool westSideIsRamp;
+    
+    public bool hasWindows;
 }

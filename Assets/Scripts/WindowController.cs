@@ -6,11 +6,11 @@ public class WindowController : MonoBehaviour {
     public GameObject brokenWindow;
     public float minimumVelocityForBreaking;
 
-    void OnCollisionEnter(Collision collision) {
+    void OnTriggerEnter(Collider collider) {
         Debug.Log("new collision");
-        if (collision.relativeVelocity.magnitude > minimumVelocityForBreaking) {
+        // if (collision.relativeVelocity.magnitude > minimumVelocityForBreaking) {
             Destroy(gameObject);
             Instantiate(brokenWindow, transform.position, transform.rotation * Quaternion.Euler(-90f, 0, 0));
-        }
+        // }
     }
 }

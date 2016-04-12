@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -182.4, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40,19 +40,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerSegment: {fileID: 195496, guid: 127d14180b1044316979ad182dbc6e1b, type: 2}
+  ramp: {fileID: 141380, guid: 8ace2201953724e64bca2a348811d906, type: 2}
+  window: {fileID: 100898, guid: 6e85e6b484fdf4117a7c78576f8d0502, type: 2}
   floorInfos:
   - northSideIsRamp: 0
     eastSideIsRamp: 0
     southSideIsRamp: 0
     westSideIsRamp: 0
+    hasWindows: 0
   - northSideIsRamp: 0
     eastSideIsRamp: 0
     southSideIsRamp: 0
     westSideIsRamp: 0
+    hasWindows: 0
   - northSideIsRamp: 0
     eastSideIsRamp: 0
     southSideIsRamp: 0
     westSideIsRamp: 0
+    hasWindows: 0
+  shouldAutoUpdate: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

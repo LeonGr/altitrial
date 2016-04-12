@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -34,6 +35,12 @@ public class BikeController : MonoBehaviour {
         }
         
         
+    }
+    
+    public void Update() {
+        if (transform.position.y <= 2f) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     // finds the corresponding visual wheel

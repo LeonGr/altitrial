@@ -18,23 +18,23 @@ public class BikeController : MonoBehaviour {
     public float turboDrag;
     public float turboAngularDrag;
 
+	public float jumpForce;
+    float distToGround;
+
 
     public void Start() {
-        
         // Fix jittery car movement by changing sub-stepping
         foreach (AxleInfo axleInfo in axleInfos) {
-            if (axleInfo.steering) {
-                axleInfo.rightWheel.ConfigureVehicleSubsteps(5, 12, 15);
-                axleInfo.leftWheel.ConfigureVehicleSubsteps(5, 12, 15);
-            }
-            
-            if (axleInfo.motor) {
-                axleInfo.rightWheel.ConfigureVehicleSubsteps(5, 12, 15);
-                axleInfo.leftWheel.ConfigureVehicleSubsteps(5, 12, 15);            
-            }
-        }
-        
-        
+			if (axleInfo.steering) {
+				axleInfo.rightWheel.ConfigureVehicleSubsteps(5, 12, 15);
+				axleInfo.leftWheel.ConfigureVehicleSubsteps(5, 12, 15);
+			}
+
+			if (axleInfo.motor) {
+				axleInfo.rightWheel.ConfigureVehicleSubsteps(5, 12, 15);
+				axleInfo.leftWheel.ConfigureVehicleSubsteps(5, 12, 15);            
+			}
+        }     
     }
     
     public void Update() {
@@ -56,7 +56,7 @@ public class BikeController : MonoBehaviour {
         Quaternion rotation;
         collider.GetWorldPose(out position, out rotation);
         
-        if (isLeftWheel) {
+        if (!isLeftWheel) {
             rotation *= Quaternion.Euler(0, -90, 0);    
         } else {
             rotation *= Quaternion.Euler(0, 90, 0);
@@ -90,6 +90,37 @@ public class BikeController : MonoBehaviour {
         
         
         ApplyTurbo();
+		flipCar();
+	}
+
+	void flipCar() {
+		if (Input.GetAxis("Flip") > 0) {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            Vector3 up = transform.TransformDirection(Vector3.up);
+            Vector3 left = transform.TransformDirection(Vector3.left);
+            Vector3 right = transform.TransformDirection(Vector3.right);
+            
+            // Check if there is an object directly above the car
+            if(Physics.Raycast(transform.position, up, 2)){
+                rb.AddForce(new Vector3 (0, jumpForce, 0));
+                Vector3 flip = transform.TransformDirection(Vector3.forward);
+                rb.AddTorque(flip * 10000f);
+            }
+            
+            else if(Physics.Raycast(transform.position, left, 1)){
+                rb.AddForce(new Vector3 (0, jumpForce, 0));
+                Vector3 flip = transform.TransformDirection(Vector3.forward);
+                rb.AddTorque(flip * -2000f);
+            }
+           
+            else if(Physics.Raycast(transform.position, right, 1)){
+                rb.AddForce(new Vector3 (0, jumpForce, 0));
+                Vector3 flip = transform.TransformDirection(Vector3.forward);
+                rb.AddTorque(flip * 2000f);
+            }
+
+		}
+	
 	}
     
     void ApplyTurbo () {

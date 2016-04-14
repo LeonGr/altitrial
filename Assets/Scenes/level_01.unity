@@ -69143,6 +69143,8 @@ GameObject:
   - 4: {fileID: 1849651881}
   - 54: {fileID: 1849651880}
   - 114: {fileID: 1849651882}
+  - 114: {fileID: 1849651884}
+  - 114: {fileID: 1849651883}
   m_Layer: 9
   m_Name: car_root
   m_TagString: Untagged
@@ -69171,8 +69173,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1849651879}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: -169.87, y: 166.99, z: -146.4}
+  m_LocalRotation: {x: -0.014160472, y: -0.7334858, z: 0.0027652606, w: -0.67955166}
+  m_LocalPosition: {x: -167.24107, y: 166.13774, z: -162.2661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1806430548}
@@ -69209,6 +69211,49 @@ MonoBehaviour:
   defaultAngularDrag: 1.2
   turboDrag: 0
   turboAngularDrag: 40
+  jumpForce: 50000
+--- !u!114 &1849651883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849651879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a393c1d18a50c4409a389e2853f5649e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axleInfos: []
+  maxMotorTorque: 0
+  maxSteeringAngle: 0
+  maxSpeed: 0
+  accelerationMultiplier: 0
+  defaultDrag: 0
+  defaultAngularDrag: 0
+  turboDrag: 0
+  turboAngularDrag: 0
+  jumpForce: 0
+--- !u!114 &1849651884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1849651879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a393c1d18a50c4409a389e2853f5649e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axleInfos: []
+  maxMotorTorque: 0
+  maxSteeringAngle: 0
+  maxSpeed: 0
+  accelerationMultiplier: 0
+  defaultDrag: 0
+  defaultAngularDrag: 0
+  turboDrag: 0
+  turboAngularDrag: 0
+  jumpForce: 0
 --- !u!1 &1852723031
 GameObject:
   m_ObjectHideFlags: 0
